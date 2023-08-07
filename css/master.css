@@ -1,0 +1,293 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    height: 10000px;
+}
+.container {
+    display: flex;
+    gap: 50px;
+}
+.e-box {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 250px;
+    position: relative;
+}
+.e-box::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: orange;
+    top: 5px;
+    right: 5px;
+    animation: e-move 2s linear  infinite;
+    animation-delay: 2s;
+}
+.e-box > div {
+    height: 100%;
+    background-color: black;
+}
+.e-box .one {
+
+}
+.e-box .two,
+.e-box .four {
+    width: 50px;
+}
+.e-box .three {
+
+}
+.e-box .five {
+
+}
+
+.l-box {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 250px;
+    position: relative;
+}
+.l-box::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: orange;
+    right: 5px;
+    bottom: 5px;
+    animation: l-move 2s  linear infinite;
+}
+.l-box > div {
+    height: 100%;
+    background-color: black;
+}
+.l-box .one,
+.l-box .two,
+.l-box .three,
+.l-box .four {
+    width: 50px;
+}
+.l-box .five {
+
+}
+@keyframes e-move {
+    0% {
+        transform: translateX(0px);
+    }
+    10% {
+        transform: translateX(-100px);
+    }
+    20% {
+        transform: translate(-100px, 100px);
+    }
+    30% {
+        transform: translate(0px, 100px);
+    }
+    40% {
+        transform: translate(-100px, 100px);
+    }
+    50% {
+        transform: translate(-100px, 200px);
+    }
+    60% {
+        transform: translate(0px, 200px);
+    }
+    70% {
+        transform: translate(-100px, 200px);
+    }
+    80% {
+        transform: translate(-100px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    }
+}
+@keyframes l-move {
+    0% {
+        transform: translate(0px);
+    }
+    25% {
+        transform: translate(-100px, 0);
+    }
+    50% {
+        transform: translate(-100px, -200px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-100px, -200px);
+        opacity: 0;
+    }
+}
+
+
+.parent {
+    width: 500px;
+    height: 400px;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: repeat(2, 240px) ;
+    grid-template-rows: auto;
+    gap: 30px;
+    position: relative;
+}
+.parent .e div,
+.parent .l div {
+    background-color: #0e1011;
+}
+.parent .e,
+.parent .l {
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(7, 60px);
+}
+.e .one {
+    grid-area: 1 / 1 / 2 / span 4; 
+}
+.e .two {
+    grid-area: 2 / 1 / span 2 / 2;
+}
+.e .three {
+    grid-area: 4 / 1 / 5 / span 4 ;
+}
+.e .four {
+    grid-area: 5 / 1 / span 2 / 2 ;
+}
+.e .five {
+    grid-area: 7 / 1 / 8 / span 4  ;
+}
+.l .first {
+    grid-area: 1 / 1 / span 6 / 1;
+}
+.l .second {
+    grid-area: 7 / 1 / 8 / span 4 ;
+}
+.parent::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fea604;
+    left: 190px;
+    top: 10px;
+    animation: move-e 6s linear;
+}
+.parent::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fea604;
+    right: 0px;
+    bottom: -10px;
+    opacity: 0;
+    animation: move-l 3s linear 6s;
+}
+@keyframes move-e {
+    /* 0% {
+        transform: translateX(0px);
+    }
+    10% {
+        transform: translateX(-180px);
+    }
+    20% {
+        transform: translate(-180px, 180px);
+    }
+    30% {
+        transform: translate(0px, 180px);
+    }
+    40% {
+        transform: translate(-180px, 180px);
+    }
+    50% {
+        transform: translate(-180px, 360px);
+    }
+    60% {
+        transform: translate(0px, 360px);
+    }
+    70% {
+        transform: translate(-180px, 360px);
+    }
+    80% {
+        transform: translate(-180px, 0px);
+    }
+    100% {
+        transform: translate(0px, 0px);
+    } */
+
+    /* onother answer */
+    0%,
+    100% {
+        top: 10px;
+        left: 190px;
+    }
+    10%,
+    90% {
+        top: 10px;
+        left: 10px;
+    }
+    20%,
+    40% {
+        top: 190px;
+        left: 10px;
+    }
+    30% {
+        top: 190px;
+        left: 190px;
+    }
+    50%,
+    70% {
+        top: 370px;
+        left: 10px;
+    }
+    60% {
+        top: 370px;
+        left: 190px;
+    }
+}
+@keyframes move-l {
+    /* 0% {
+        transform: translate(0px);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(-180px, 0);
+    }
+    50% {
+        transform: translate(-180px, -360px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-180px, -360px);
+        opacity: 0;
+    } */
+
+    /* another answer */
+    0% {
+        opacity: 0;
+        right: 0;
+        bottom: -10px;
+    }
+    5% {
+        opacity: 1;
+    }
+    30% {
+        right: 180px;
+        bottom: -10px;
+    }
+    90% {
+        opacity: 1;
+        right: 180px;
+        bottom: 350px;
+    }
+    100% {
+        opacity: 0;
+        right: 180px;
+        bottom: 350px;
+    }
+}
